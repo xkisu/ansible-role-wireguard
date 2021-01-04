@@ -25,7 +25,9 @@
   failed_when: wireguard__register_module_enabled is failure
   tags:
     - wg-install
-  when: not ansible_os_family == 'Darwin' and not ansible_os_family == "CentOS"
+  when:
+    - not ansible_os_family == 'Darwin'
+    - not ansible_distribution == 'CentOS'
 
 - block:
   # Key handling [[[1
